@@ -11,8 +11,8 @@ black = 255, 255, 255
 
 screen = pygame.display.set_mode(size)
 
-screen.fill(black)
-
+screen.fill(black)      
+                           
 class orb():
     def __init__(self, spawn_x, spawn_y, speed):
         self.hitbox = ball.get_rect(center = (spawn_x, spawn_y))
@@ -30,8 +30,9 @@ class orb():
     
     def doodle(self, bean):
         print(bean)
-x = orb(3, 3, [1,1])
+
 balls = [orb(100, 200, [5,1])]
+
 while 1:
     for event in pygame.event.get():
         if event.type == pygame.QUIT: sys.exit() 
@@ -41,3 +42,4 @@ while 1:
     balls[0].speed = [buttons[275] - buttons[276], buttons[274] - buttons[273]]
     if buttons[32] == 1: screen.fill(black)
     pygame.display.flip()
+    print(pygame.key.get_pressed())

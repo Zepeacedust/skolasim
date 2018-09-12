@@ -1,6 +1,6 @@
-# Arnór Mon Sep 10 17:15:17 2018
-continue = True
-while continue:
+# Arnór Wed Sep 12 11:32:54 2018
+proceed = True
+while proceed:
    #setja upp valmynd
     print('veldu 1 fyrir lið 1')
     print('veldu 2 fyrir lið 2')
@@ -16,28 +16,28 @@ while continue:
     print('veldu 12 fyrir lið 12')
     print('veldu exit til að hætta')
     liður = input()
-    if liður == '1': 
-        # cóði fyrir lið 1
-    elif liður == '2': 
-        # cóði fyrir lið 2
-    elif liður == '3': 
-        # cóði fyrir lið 3
-    elif liður == '4': 
-        # cóði fyrir lið 4
-    elif liður == '5': 
-        # cóði fyrir lið 5
-    elif liður == '6': 
-        # cóði fyrir lið 6
-    elif liður == '7': 
-        # cóði fyrir lið 7
-    elif liður == '8': 
-        # cóði fyrir lið 8
-    elif liður == '9': 
-        # cóði fyrir lið 9
-    elif liður == '10': 
-        # cóði fyrir lið 10
-    elif liður == '11': 
-        # cóði fyrir lið 11
-    elif liður == '12': 
-        # cóði fyrir lið 12
-    elif liður == 'exit': continue = False# exit condition
+    if liður == '1':
+        'placeholder svo það komi ekki error'# cóði fyrir lið 1
+    elif liður == '2':
+        'placeholder svo það komi ekki error'# cóði fyrir lið 2
+    elif liður == '3':
+        'placeholder svo það komi ekki error'# cóði fyrir lið 3
+    elif liður == '4':
+        'placeholder svo það komi ekki error'# cóði fyrir lið 4
+    elif liður == '5':
+        'placeholder svo það komi ekki error'# cóði fyrir lið 5
+    elif liður == '6':
+        'placeholder svo það komi ekki error'# cóði fyrir lið 6
+    elif liður == '7':
+        'placeholder svo það komi ekki error'# cóði fyrir lið 7
+    elif liður == '8':
+        'placeholder svo það komi ekki error'# cóði fyrir lið 8
+    elif liður == '9':
+        'placeholder svo það komi ekki error'# cóði fyrir lið 9
+    elif liður == '10':
+        'placeholder svo það komi ekki error'# cóði fyrir lið 10
+    elif liður == '11':
+        'placeholder svo það komi ekki error'# cóði fyrir lið 11
+    elif liður == '12':
+        'placeholder svo það komi ekki error'# cóði fyrir lið 12
+    elif liður == 'exit': proceed = False# exit condition
