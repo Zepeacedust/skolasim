@@ -1,7 +1,7 @@
 import pygame, humans, sys
 pygame.init()
-x = humans.student(200, 200)
-y = humans.student(200, 200)
+x = humans.student(200, 200, 7)
+y = humans.student(200, 200, 7)
 x.connect(y, 200)
 school = pygame.display.set_mode((400, 400))
 school.fill((255,255,255))
@@ -14,3 +14,6 @@ while 1:#gameplay loop
     school.blit(x.image, x.rect)
     school.blit(y.image, y.rect)
     pygame.display.flip()
+    x.move((22 ,7))
+    y.move((22/7, 1))
+    pygame.time.Clock().tick(60)
