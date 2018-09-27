@@ -1,4 +1,8 @@
+from menu import valmynd
 import humans
+
+valmynd()
+
 x = humans.student()
 y = humans.student()
 x.connect(y, 200)
