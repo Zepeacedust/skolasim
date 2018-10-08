@@ -2,6 +2,15 @@ import pygame, humans, sys, menu
 from random import randint
 
 menu.valmynd()
+<<<<<<< HEAD
+=======
+skra = open("settings/exit.txt", "r")
+for line in skra:
+    if line == "True":
+        sys.exit()
+skra.close()
+
+>>>>>>> 91832090beb9976489a54472d9d4d50ca7b47bcc
 pygame.init()
 student_list = []
 for stud_num in range(200):
