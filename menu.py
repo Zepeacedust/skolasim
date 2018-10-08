@@ -1,19 +1,54 @@
 from appJar import gui
+import sys
+
+def geraStrMedNull(strengur):
+    if strengur < 10:
+        return "0"+str(strengur)
+    else:
+        return str(strengur)
+
+skra = open("settings/exit.txt", "w")
+skra.write("False")
+skra.close()
 
 padding_in_X = 250
 padding_in_Y = 10
 
 def valmynd():
-    menu = gui("Skóla simulator", "1600x800")
+    menu = gui("Skóla simulator", "600x800")
     menu.setBg("lightblue")
-    menu.setSize("fullscreen")
+    # menu.setSize("fullscreen")
 
     def main_menu(button):
         if button == "Spila":
-            fps = menu.getScale("fps-tala")
-            print(fps)
+            skra = open("settings/settings.txt")
+            settings = {}
+            for line in skra:
+                settings[line[0:3]] = line[6:8]
+            skra.close()
+
+                # lina = list(lina)
+                # lina[6] = tala_str[0]
+                # lina[7] = tala_str[1]
+                # lina = "".join(lina)
+
+            settings["FPS"] = geraStrMedNull(menu.getScale("fps-tala"))
+            settings["LFS"] = geraStrMedNull(menu.getScale("likur-samskipti"))
+            settings["LAS"] = geraStrMedNull(menu.getScale("likur-spjall"))
+
+            skra = open("settings/settings.txt", "w")
+            for setting in settings:
+                skra.write(str(setting)+" = "+str(settings[setting])+"\n")
+            skra.close()
             
-        elif button == "Hætta": menu.stop()
+            menu.stop()
+            
+        elif button == "Hætta":
+            skra = open("settings/exit.txt", "w")
+            skra.write("True")
+            skra.close()
+
+            menu.stop()
     
     menu.setInPadding(padding_in_X,padding_in_Y)
     menu.setSticky("")
@@ -64,22 +99,22 @@ def valmynd():
     menu.stopFrame()#/NIDRI_1
     menu.stopFrame()#/MENU_LEFT
 
-    menu.startFrame("MENU_RIGHT", row=0, column=1)#MENU_RIGHT
+    # menu.startFrame("MENU_RIGHT", row=0, column=1)#MENU_RIGHT
 
-    menu.startFrame("prufu_slider_1")
-    menu.setInPadding(padding_in_X,padding_in_Y)
-    menu.setSticky("s")
-    menu.addLabel("Prufu renna 1")
-    menu.setSticky("n")
-    menu.addScale("prufu_slider_1")
-    menu.showScaleValue("prufu_slider_1", show=True)
-    menu.stopFrame()
+    # menu.startFrame("prufu_slider_1")
+    # menu.setInPadding(padding_in_X,padding_in_Y)
+    # menu.setSticky("s")
+    # menu.addLabel("Prufu renna 1")
+    # menu.setSticky("n")
+    # menu.addScale("prufu_slider_1")
+    # menu.showScaleValue("prufu_slider_1", show=True)
+    # menu.stopFrame()
 
-    menu.stopFrame()#/MENU_RIGHT
+    # menu.stopFrame()#/MENU_RIGHT
 
-    menu.startFrame("MENU_RIGHT2", row=0, column=2)#MENU_RIGHT
+    # menu.startFrame("MENU_RIGHT2", row=0, column=2)#MENU_RIGHT
 
-    menu.stopFrame()#/MENU_RIGHT
+    # menu.stopFrame()#/MENU_RIGHT
 
     menu.go()
 

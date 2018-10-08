@@ -1,4 +1,12 @@
-import pygame, humans, sys
+import pygame, humans, sys, menu
+
+menu.valmynd()
+skra = open("settings/exit.txt", "r")
+for line in skra:
+    if line == "True":
+        sys.exit()
+skra.close()
+
 pygame.init()
 x = humans.student(200, 200, 7)
 y = humans.student(000, 600, 7)
