@@ -1,7 +1,7 @@
 import pygame, humans, sys, menu
 from random import randint
 
-#menu.valmynd()
+menu.valmynd()
 pygame.init()
 student_list = []
 for stud_num in range(200):
