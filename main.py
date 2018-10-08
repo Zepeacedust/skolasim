@@ -1,4 +1,5 @@
 import pygame, humans, sys, menu
+from random import randint
 
 menu.valmynd()
 skra = open("settings/exit.txt", "r")
@@ -8,24 +9,22 @@ for line in skra:
 skra.close()
 
 pygame.init()
-x = humans.student(200, 200, 7)
-y = humans.student(000, 600, 7)
-z = humans.student(600, 000, 7)
-x.connect(y, 200)
+student_list = []
+for stud_num in range(200):
+    student_list.append(humans.student(randint(0,800), randint(0,800), randint(1,10), stud_num))
+
+student_list[1].image = pygame.image.load("./sprites/import.JPEG")
+
 school = pygame.display.set_mode((800, 800))
 school.fill((255,255,255))
-
-print(x.connections)
-print(y.connections)
 while 1:#gameplay loop
     for event in pygame.event.get():
         if event.type == pygame.QUIT: sys.exit()
-    school.blit(x.image, x.rect)
-    school.blit(y.image, y.rect)
-    school.blit(z.image, z.rect)
+    target =randint(0,len(student_list) - 1)
+    school.fill((255, 255, 255))
+    for student in student_list:
+        school.blit(student.image,student.rect)
+        student.scan_surroundings(student_list)
+        student.move(student.moveto(student.find_friend()))
     pygame.display.flip()
-    print(x.moveto(y))
-    z.move(z.moveto(x))
-    x.move(x.moveto(y))
-    y.move((1, 0))
-    pygame.time.Clock().tick(60)
+    pygame.time.Clock().tick(300)
