@@ -1,0 +1,3 @@
+FPS = 30 # Rammar á sekúndu
+LFS = 50 # Líkur á fyrstu samskiptum
+LAS = 50 # Líkur á spjalli
