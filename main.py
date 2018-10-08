@@ -13,7 +13,7 @@ student_list = []
 for stud_num in range(200):
     student_list.append(humans.student(randint(0,800), randint(0,800), randint(1,10), stud_num))
 
-student_list[1].image = pygame.image.load("./sprites/import.JPEG")
+# student_list[1].image = pygame.image.load("./sprites/import.JPEG")
 
 school = pygame.display.set_mode((800, 800))
 school.fill((255,255,255))

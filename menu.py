@@ -3,6 +3,8 @@ import sys
 
 def geraStrMedNull(strengur):
     if strengur < 10:
+        return "00"+str(strengur)
+    if strengur < 100:
         return "0"+str(strengur)
     else:
         return str(strengur)
@@ -17,14 +19,14 @@ padding_in_Y = 10
 def valmynd():
     menu = gui("Skóla simulator", "600x800")
     menu.setBg("lightblue")
-    # menu.setSize("fullscreen")
+    menu.setSize("fullscreen")
 
     def main_menu(button):
         if button == "Spila":
             skra = open("settings/settings.txt")
             settings = {}
             for line in skra:
-                settings[line[0:3]] = line[6:8]
+                settings[line[0:3]] = line[6:9]
             skra.close()
 
                 # lina = list(lina)
@@ -50,6 +52,12 @@ def valmynd():
 
             menu.stop()
     
+    skra = open("settings/settings.txt")
+    settings = {}
+    for line in skra:
+        settings[line[0:3]] = line[6:9]
+    skra.close()
+
     menu.setInPadding(padding_in_X,padding_in_Y)
     menu.setSticky("")
     menu.startFrame("MENU_LEFT", row=0, column=0)#MENU_LEFT
@@ -72,6 +80,7 @@ def valmynd():
     menu.addLabel("fps-text", "Rammar á sekúndu")
     menu.setSticky("n")
     menu.addScale("fps-tala")
+    menu.setScaleRange("fps-tala", 1, 240, settings["FPS"])
     menu.showScaleValue("fps-tala", show=True)
     menu.stopFrame()
 
@@ -81,6 +90,7 @@ def valmynd():
     menu.addLabel("Líkur á fyrstu samskiptum")
     menu.setSticky("n")
     menu.addScale("likur-samskipti")
+    menu.setScaleRange("likur-samskipti", 1, 5, settings["LFS"])
     menu.showScaleValue("likur-samskipti", show=True)
     menu.stopFrame()
 
@@ -90,6 +100,7 @@ def valmynd():
     menu.addLabel("Líkur á spjalli")
     menu.setSticky("n")
     menu.addScale("likur-spjall")
+    menu.setScaleRange("likur-spjall", 1, 5, settings["LAS"])
     menu.showScaleValue("likur-spjall", show=True)
     menu.stopFrame()
 

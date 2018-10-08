@@ -1,3 +1,3 @@
-FPS = 05
-LFS = 10
-LAS = 90
+FPS = 113
+LFS = 004
+LAS = 002
