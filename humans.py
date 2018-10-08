@@ -23,11 +23,12 @@ class student(pygame.sprite.Sprite):#generic social humanoid
     def moveto(self, target):
         if self.move_counter == 30:
             self.move_counter = 0
-            x_mov = self.rect.x - target.rect.x
-            y_mov = self.rect.y - target.rect.y
-            if x_mov == 0 and y_mov == 0:
+            x_dif = self.rect.x - target.rect.x
+            y_dif = self.rect.y - target.rect.y
+            if x_dif == 0 and y_dif == 0:
                 self.move_angle = 0, 0
             else:
-                self.move_angle = x_mov / max([x_mov, y_mov], key = abs), y_mov / max([x_mov, y_mov], key = abs)
+                self.move_angle = (-x_dif / abs(max(x_dif, y_dif, key = abs)), -y_dif / abs(max(x_dif, y_dif, key = abs)))
         self.move_counter += 1
-        return self.move_angle
+        return self.move_angle 
+     
