@@ -7,6 +7,10 @@ for line in skra:
     if line == "True":
         sys.exit()
 skra.close()
+settings = (open("settings/settings.txt", "r").read()).split()
+
+fps = int(settings[2])
+
 
 pygame.init()
 student_list = []
@@ -26,5 +30,6 @@ while 1:#gameplay loop
         school.blit(student.image,student.rect)
         student.scan_surroundings(student_list)
         student.move(student.moveto(student.find_friend()))
+        student.check_collide(student_list)
     pygame.display.flip()
-    pygame.time.Clock().tick(300)
+    pygame.time.Clock().tick(fps)
