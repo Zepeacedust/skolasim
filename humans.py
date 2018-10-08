@@ -13,6 +13,7 @@ class student(pygame.sprite.Sprite):#generic social humanoid
         self.move_counter = 300
         self.move_angle = 0, 0
         self.stud_num = student_number
+        self.scan_delay = 300
     def connect(self, target, score):
         self.connections[target] = 1 / (1 + abs(self.pers - target.pers)) * score#lætur fólk mep líkan persónuleika verða vinir hraðar
         target.connections[self] = 1 / (1 + abs(self.pers - target.pers)) * score
@@ -27,15 +28,18 @@ class student(pygame.sprite.Sprite):#generic social humanoid
             x_dif = self.rect.x - target.rect.x
             y_dif = self.rect.y - target.rect.y
             if x_dif == 0 and y_dif == 0:
-                self.move_angle = 0, 0
+                self.move_angle = 0,0
             else:
                 self.move_angle = (-x_dif / abs(max(x_dif, y_dif, key = abs)), -y_dif / abs(max(x_dif, y_dif, key = abs)))
         self.move_counter += 1
         return self.move_angle 
     def scan_surroundings(self, students):
-        for stud in students:
-            if abs(stud.rect.x - self.rect.x) < 200 and abs(stud.rect.y - self.rect.y) < 200:
-                self.connect(stud, 100 / ((abs(stud.rect.x-self.rect.x)+abs(stud.rect.y - self.rect.y))+1))
+        if self.scan_delay >= 10:
+            self.scan_delay = 0
+            for stud in students:
+                if abs(stud.rect.x - self.rect.x) < 200 and abs(stud.rect.y - self.rect.y) < 200:
+                    self.connect(stud, 100 / ((abs(stud.rect.x-self.rect.x)+abs(stud.rect.y - self.rect.y))+1))
+                self.scan_delay += 1
     
     def find_friend(self):
         top_connect = 0
@@ -45,6 +49,16 @@ class student(pygame.sprite.Sprite):#generic social humanoid
                 top_connect = self.connections[stud]
                 friend = stud
         return friend
+    def check_collide(self, students):
+        for stud in students:
+            if self.rect.colliderect(stud.rect):
+                if abs(self.rect.x - stud.rect.x) < abs(self.rect.y - stud.rect.y):
+                    self.move_angle[1] = 0
+                    stud.move_angle[1] = 0
+                elif abs(self.rect.x - stud.rect.x) > abs(self.rect.y - stud.rect.y):
+                    self.move_angle[0] = 0
+                    stud.move_angle[0] = 0
+
 
         
      

@@ -2,15 +2,16 @@ import pygame, humans, sys, menu
 from random import randint
 
 menu.valmynd()
-<<<<<<< HEAD
-=======
 skra = open("settings/exit.txt", "r")
 for line in skra:
     if line == "True":
         sys.exit()
 skra.close()
+settings = (open("settings/settings.txt", "r").read()).split()
 
->>>>>>> 91832090beb9976489a54472d9d4d50ca7b47bcc
+fps = int(settings[2])
+
+
 pygame.init()
 student_list = []
 for stud_num in range(200):
@@ -29,5 +30,6 @@ while 1:#gameplay loop
         school.blit(student.image,student.rect)
         student.scan_surroundings(student_list)
         student.move(student.moveto(student.find_friend()))
+        student.check_collide(student_list)
     pygame.display.flip()
-    pygame.time.Clock().tick(300)
+    pygame.time.Clock().tick(fps)
