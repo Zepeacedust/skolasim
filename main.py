@@ -5,7 +5,7 @@ scan_delay = 300
 coll_delay = 300
 move_delay = 300
 
-#menu.valmynd()
+menu.valmynd()
 skra = open("settings/exit.txt", "r")
 for line in skra:
     if line == "True":
